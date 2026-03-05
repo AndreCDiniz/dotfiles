@@ -5,6 +5,7 @@
 */lazygit/state.yml
 */nvim/lazy-lock.json
 */btop/btop.log
+go/
 */go
 */work
 */gh
@@ -16,3 +17,28 @@
 .aider*
 .env
 .DS_Store
+
+# Swap files
+*.swp
+*.swo
+
+# Arquivos de cache e session
+.zsh/.zsh
+.zsh/cache/
+
+# IDEs e editores — contém tokens, API keys e configurações privadas
+*/Cursor
+*/Code
+*/JetBrains
+*/vscode-sqltools
+*/cagent
+*/rest-client
+
+# Templates e projetos gerados automaticamente
+*/create-next-app-nodejs
+*/nextjs-nodejs
+
+# Ferramentas de desenvolvimento (configs locais, não portáveis)
+*/dlv
+*/gopls
+*/systemd

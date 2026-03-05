@@ -54,3 +54,32 @@ if [ -z "$SSH_CONNECTION" ] && [ -f "$HOME/.zsh/tmux.zsh" ]; then
 fi
 
 # -- System Added...
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Golang PATH
+export PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH"
+
+PATH=~/.console-ninja/.bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# Zoxide init (must be at the end of .zshrc)
+eval "$(zoxide init --cmd cd zsh)"
+
+#Function to open
+open() {
+    if [ $# -eq 0 ]; then
+        explorer.exe .
+    else
+        if [ -d "$1" ]; then
+            explorer.exe "$1"
+        else
+            # Converte o caminho para formato Windows
+            local winpath=$(wslpath -w "$1")
+            cmd.exe /c start "" "$winpath" 2>/dev/null
+        fi
+    fi
+}

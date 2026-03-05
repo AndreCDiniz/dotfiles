@@ -10,7 +10,7 @@ return {
         },
       },
       window = {
-        position = "right",
+        position = "left",
       },
       filesystem = {
         filtered_items = {
