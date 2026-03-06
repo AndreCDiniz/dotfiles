@@ -66,10 +66,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-# Zoxide init (must be at the end of .zshrc)
-eval "$(zoxide init --cmd cd zsh)"
-
-#Function to open
+# Function to open files/dirs in Windows Explorer (WSL only)
 open() {
     if [ $# -eq 0 ]; then
         explorer.exe .
@@ -77,9 +74,11 @@ open() {
         if [ -d "$1" ]; then
             explorer.exe "$1"
         else
-            # Converte o caminho para formato Windows
             local winpath=$(wslpath -w "$1")
             cmd.exe /c start "" "$winpath" 2>/dev/null
         fi
     fi
 }
+
+# Zoxide init (must be at the very end of .zshrc)
+eval "$(zoxide init --cmd cd zsh)"
