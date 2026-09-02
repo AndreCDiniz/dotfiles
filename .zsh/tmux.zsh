@@ -55,10 +55,10 @@ randomize_session_names() {
     printf "%s\n" "${session_names[@]}" | sort -R
 }
 
-# Checks if tmux is installed, if not, install it
-if [ ! -f $BREW_PREFIX/bin/tmux ]; then
+# Instala o tmux só em bootstrap (ENSURE_PACKAGES=true)
+if [[ "$ENSURE_PACKAGES" == "true" && ! -x "$BREW_PREFIX/bin/tmux" ]]; then
     echo "Installing Tmux..."
-    $BREW_PREFIX/bin/brew install tmux
+    "$BREW_PREFIX/bin/brew" install tmux
 fi
 
 # Start tmux if not already running

@@ -8,12 +8,12 @@ alias dev="cd ~dev"
 alias dot="cd ~/dotfiles"
 alias reload="source ~/.zshrc"
 if_exists code && alias zshconfig="code $HOME/.zshrc"
-alias delete="rm -rf"
+alias delete="rm -rfI"   # -I: pede confirmacao uma vez ao apagar recursivamente ou >3 itens
 alias myip="curl http://ipecho.net/plain; echo"
 $IS_WSL && alias explorer="/mnt/c/Windows/explorer.exe"
 # Docker Aliases
-if_exists docker && alias drai="docker rmi $(docker images -a -q)"
-if_exists docker && alias drac="docker rm $(docker ps -a -q)"
+if_exists docker && alias drai='docker rmi $(docker images -a -q)'
+if_exists docker && alias drac='docker rm $(docker ps -a -q)'
 alias c="code"
 alias ci="code-insiders"
 alias cu="cursor"

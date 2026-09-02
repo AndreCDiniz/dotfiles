@@ -1,4 +1,5 @@
-WINDOWS_USERNAME=arthu
+# Nome da pasta do usuario em C:\Users (veja com: cmd.exe /c 'echo %USERNAME%')
+WINDOWS_USERNAME=ADiniz
 
 # Fix Interop Error that randomly occurs in vscode terminal when using WSL2
 fix_wsl2_interop() {

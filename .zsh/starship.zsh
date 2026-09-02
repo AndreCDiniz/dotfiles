@@ -1,5 +1,5 @@
-# Downloads starship if not installed
-if [ ! -f /usr/local/bin/starship ]; then
+# Instalador remoto do starship: só quando ENSURE_PACKAGES=true (bootstrap de máquina nova)
+if [[ "$ENSURE_PACKAGES" == "true" ]] && ! command -v starship >/dev/null 2>&1; then
     curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi
 
@@ -63,5 +63,5 @@ export STARSHIP_DEVICE="$DEVICE"
 # Fixes: https://github.com/starship/starship/issues/3418
 type starship_zle-keymap-select >/dev/null ||
     {
-        eval "$(/usr/local/bin/starship init zsh)"
+        command -v starship >/dev/null && eval "$(starship init zsh)"
     }
